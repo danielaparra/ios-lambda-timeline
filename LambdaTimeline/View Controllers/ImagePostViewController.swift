@@ -112,6 +112,112 @@ class ImagePostViewController: ShiftableViewController {
         view.layoutSubviews()
     }
     
+    @IBAction func selectBlur(_ sender: Any) {
+        gaussianBlurLabel.isHidden = false
+        gaussianBlurSlider.isHidden = false
+        
+        exposureLabel.isHidden = true
+        exposureSlider.isHidden = true
+        vibranceLabel.isHidden = true
+        vibranceSlider.isHidden = true
+        tintLabel.isHidden = true
+        tintSlider.isHidden = true
+        temperatureLabel.isHidden = true
+        temperatureSlider.isHidden = true
+        posterizeLabel.isHidden = true
+        posterizeSlider.isHidden = true
+    }
+    
+    @IBAction func selectExposure(_ sender: Any) {
+        gaussianBlurLabel.isHidden = true
+        gaussianBlurSlider.isHidden = true
+        
+        exposureLabel.isHidden = false
+        exposureSlider.isHidden = false
+        vibranceLabel.isHidden = true
+        vibranceSlider.isHidden = true
+        tintLabel.isHidden = true
+        tintSlider.isHidden = true
+        temperatureLabel.isHidden = true
+        temperatureSlider.isHidden = true
+        posterizeLabel.isHidden = true
+        posterizeSlider.isHidden = true
+    }
+    
+    @IBAction func selectTintAndTemp(_ sender: Any) {
+        gaussianBlurLabel.isHidden = true
+        gaussianBlurSlider.isHidden = true
+        
+        exposureLabel.isHidden = true
+        exposureSlider.isHidden = true
+        vibranceLabel.isHidden = true
+        vibranceSlider.isHidden = true
+        tintLabel.isHidden = false
+        tintSlider.isHidden = false
+        temperatureLabel.isHidden = false
+        temperatureSlider.isHidden = false
+        posterizeLabel.isHidden = true
+        posterizeSlider.isHidden = true
+    }
+    
+    @IBAction func selectVibrance(_ sender: Any) {
+        gaussianBlurLabel.isHidden = true
+        gaussianBlurSlider.isHidden = true
+        
+        exposureLabel.isHidden = true
+        exposureSlider.isHidden = true
+        vibranceLabel.isHidden = false
+        vibranceSlider.isHidden = false
+        tintLabel.isHidden = true
+        tintSlider.isHidden = true
+        temperatureLabel.isHidden = true
+        temperatureSlider.isHidden = true
+        posterizeLabel.isHidden = true
+        posterizeSlider.isHidden = true
+        
+    }
+    
+    @IBAction func selectPosterize(_ sender: Any) {
+        gaussianBlurLabel.isHidden = true
+        gaussianBlurSlider.isHidden = true
+        
+        exposureLabel.isHidden = true
+        exposureSlider.isHidden = true
+        vibranceLabel.isHidden = true
+        vibranceSlider.isHidden = true
+        tintLabel.isHidden = true
+        tintSlider.isHidden = true
+        temperatureLabel.isHidden = true
+        temperatureSlider.isHidden = true
+        posterizeLabel.isHidden = false
+        posterizeSlider.isHidden = false
+    }
+    
+    @IBAction func changeBlur(_ sender: Any) {
+    }
+    
+    @IBAction func changeExposure(_ sender: Any) {
+    }
+    
+    @IBAction func changeTemperature(_ sender: Any) {
+    }
+    
+    @IBAction func changeTint(_ sender: Any) {
+    }
+    
+    @IBAction func changeVibrance(_ sender: Any) {
+    }
+    
+    @IBAction func changePosterize(_ sender: Any) {
+    }
+    
+    private func updateImage() {
+        
+        guard let imageData = imageData else { return }
+        
+        
+    }
+    
     var postController: PostController!
     var post: Post?
     var imageData: Data?
@@ -121,6 +227,19 @@ class ImagePostViewController: ShiftableViewController {
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var postButton: UIBarButtonItem!
+    @IBOutlet weak var gaussianBlurLabel: UISlider!
+    @IBOutlet weak var gaussianBlurSlider: UISlider!
+    @IBOutlet weak var exposureLabel: UILabel!
+    @IBOutlet weak var exposureSlider: UISlider!
+    @IBOutlet weak var vibranceLabel: UILabel!
+    @IBOutlet weak var vibranceSlider: UISlider!
+    @IBOutlet weak var tintLabel: UILabel!
+    @IBOutlet weak var tintSlider: UISlider!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var temperatureSlider: UISlider!
+    @IBOutlet weak var posterizeLabel: UILabel!
+    @IBOutlet weak var posterizeSlider: UISlider!
+    
 }
 
 extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
