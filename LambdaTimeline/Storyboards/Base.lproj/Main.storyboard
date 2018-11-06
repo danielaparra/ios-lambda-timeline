@@ -509,11 +509,77 @@
                         <outlet property="imageView" destination="Q0L-w5-qUw" id="0v7-ZB-mgi"/>
                         <outlet property="imageViewAspectRatioConstraint" destination="y1B-iX-x3e" id="wIt-kh-Tzd"/>
                         <outlet property="titleLabel" destination="jyy-BX-c2c" id="UEd-xO-ipC"/>
+                        <segue destination="UWs-Zv-rnf" kind="presentation" identifier="AddAudioComment" id="Efp-XT-VEE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1968.8" y="472.71364317841085"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="eEJ-RI-saO">
+            <objects>
+                <viewController id="UWs-Zv-rnf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bhi-Pw-77s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="jlH-k0-acd">
+                                <rect key="frame" x="32" y="200" width="311" height="167"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAI-vZ-Dph">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="46.5"/>
+                                        <state key="normal" image="record"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbS-n0-9SC">
+                                        <rect key="frame" x="0.0" y="68.5" width="311" height="46.5"/>
+                                        <state key="normal" image="stop"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="HQM-3Q-VHL">
+                                        <rect key="frame" x="0.0" y="137" width="311" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-Hw-p7b">
+                                                <rect key="frame" x="0.0" y="0.0" width="135.5" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyH-mc-MzB">
+                                                <rect key="frame" x="175.5" y="0.0" width="135.5" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="qyH-mc-MzB" firstAttribute="width" secondItem="6dA-Hw-p7b" secondAttribute="width" id="zah-b2-dqE"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wbS-n0-9SC" firstAttribute="height" secondItem="QAI-vZ-Dph" secondAttribute="height" id="KO2-z8-CDE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eQZ-LD-f06" firstAttribute="trailing" secondItem="jlH-k0-acd" secondAttribute="trailing" constant="32" id="A5y-Rp-eWf"/>
+                            <constraint firstItem="jlH-k0-acd" firstAttribute="top" secondItem="eQZ-LD-f06" secondAttribute="top" constant="180" id="hnK-QZ-Jsg"/>
+                            <constraint firstItem="jlH-k0-acd" firstAttribute="leading" secondItem="eQZ-LD-f06" secondAttribute="leading" constant="32" id="sK5-OF-9NI"/>
+                            <constraint firstItem="eQZ-LD-f06" firstAttribute="bottom" secondItem="jlH-k0-acd" secondAttribute="bottom" constant="300" id="y8S-Ck-caQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eQZ-LD-f06"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKP-he-fXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="473"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="record" width="32" height="32"/>
+        <image name="stop" width="32" height="32"/>
+    </resources>
 </document>
