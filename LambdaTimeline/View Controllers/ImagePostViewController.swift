@@ -208,19 +208,35 @@ class ImagePostViewController: ShiftableViewController {
     }
     
     @IBAction func changePosterize(_ sender: Any) {
-        updateImage()
+        guard let originalImage = originalImage else { return }
+        
+        guard let cgImage = originalImage.cgImage else { return }
+        
+        let ciImage = CIImage(cgImage: cgImage)
+        posterizeFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        posterizeFilter.setValue(posterizeSlider.value, forKey: "inputLevels")
+        
+        guard let outputCIImage = posterizeFilter.outputImage else { return }
+        
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
+        let newImage = UIImage(cgImage: outputCGImage)
+        self.originalImage = newImage
+        imageView.image = newImage
     }
     
     private func updateImage() {
         
-        guard let imageData = imageData else { return }
+        guard let originalImage = originalImage else { return }
         
-        imageView.image = image(byFiltering: imageData)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image(byFiltering: originalImage)
     }
     
-    private func image(byFiltering imageData: Data) -> UIImage {
+    private func image(byFiltering image: UIImage) -> UIImage {
         
-        guard let ciImage = CIImage(data: imageData) else { return UIImage(data: imageData)!}
+        guard let cgImage = image.cgImage else { return image }
+        
+        let ciImage = CIImage(cgImage: cgImage)
         
         gaussianBlurFilter.setValue(ciImage, forKey: kCIInputImageKey)
         gaussianBlurFilter.setValue(gaussianBlurSlider.value, forKey: kCIInputRadiusKey)
@@ -235,16 +251,18 @@ class ImagePostViewController: ShiftableViewController {
         vibranceFilter.setValue(tempAndTintFilter.outputImage, forKey: kCIInputImageKey)
         vibranceFilter.setValue(vibranceSlider.value, forKey: "inputAmount")
         
-        posterizeFilter.setValue(vibranceFilter.outputImage, forKey: kCIInputImageKey)
-        posterizeFilter.setValue(posterizeSlider.value, forKey: "inputLevels")
+        guard let outputCIImage = vibranceFilter.outputImage else { return image }
         
-        guard let outputCIImage = posterizeFilter.outputImage else { return UIImage(data: imageData)! }
-        
-        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return UIImage(data: imageData)! }
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return image }
         
         return UIImage(cgImage: outputCGImage)
     }
     
+    private var originalImage: UIImage? {
+        didSet {
+            updateImage()
+        }
+    }
     
     var postController: PostController!
     var post: Post?
@@ -287,7 +305,7 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        imageView.image = image
+        originalImage = image
         
         setImageViewHeight(with: image.ratio)
     }
@@ -296,3 +314,5 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
+
