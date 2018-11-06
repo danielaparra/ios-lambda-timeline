@@ -115,7 +115,6 @@ class ImagePostViewController: ShiftableViewController {
     @IBAction func selectBlur(_ sender: Any) {
         gaussianBlurLabel.isHidden = false
         gaussianBlurSlider.isHidden = false
-        
         exposureLabel.isHidden = true
         exposureSlider.isHidden = true
         vibranceLabel.isHidden = true
@@ -131,7 +130,6 @@ class ImagePostViewController: ShiftableViewController {
     @IBAction func selectExposure(_ sender: Any) {
         gaussianBlurLabel.isHidden = true
         gaussianBlurSlider.isHidden = true
-        
         exposureLabel.isHidden = false
         exposureSlider.isHidden = false
         vibranceLabel.isHidden = true
@@ -147,7 +145,6 @@ class ImagePostViewController: ShiftableViewController {
     @IBAction func selectTintAndTemp(_ sender: Any) {
         gaussianBlurLabel.isHidden = true
         gaussianBlurSlider.isHidden = true
-        
         exposureLabel.isHidden = true
         exposureSlider.isHidden = true
         vibranceLabel.isHidden = true
@@ -163,7 +160,6 @@ class ImagePostViewController: ShiftableViewController {
     @IBAction func selectVibrance(_ sender: Any) {
         gaussianBlurLabel.isHidden = true
         gaussianBlurSlider.isHidden = true
-        
         exposureLabel.isHidden = true
         exposureSlider.isHidden = true
         vibranceLabel.isHidden = false
@@ -174,13 +170,11 @@ class ImagePostViewController: ShiftableViewController {
         temperatureSlider.isHidden = true
         posterizeLabel.isHidden = true
         posterizeSlider.isHidden = true
-        
     }
     
     @IBAction func selectPosterize(_ sender: Any) {
         gaussianBlurLabel.isHidden = true
         gaussianBlurSlider.isHidden = true
-        
         exposureLabel.isHidden = true
         exposureSlider.isHidden = true
         vibranceLabel.isHidden = true
@@ -194,40 +188,81 @@ class ImagePostViewController: ShiftableViewController {
     }
     
     @IBAction func changeBlur(_ sender: Any) {
+        updateImage()
     }
     
     @IBAction func changeExposure(_ sender: Any) {
+        updateImage()
     }
     
     @IBAction func changeTemperature(_ sender: Any) {
+        updateImage()
     }
     
     @IBAction func changeTint(_ sender: Any) {
+        updateImage()
     }
     
     @IBAction func changeVibrance(_ sender: Any) {
+        updateImage()
     }
     
     @IBAction func changePosterize(_ sender: Any) {
+        updateImage()
     }
     
     private func updateImage() {
         
         guard let imageData = imageData else { return }
         
-        
+        imageView.image = image(byFiltering: imageData)
     }
+    
+    private func image(byFiltering imageData: Data) -> UIImage {
+        
+        guard let ciImage = CIImage(data: imageData) else { return UIImage(data: imageData)!}
+        
+        gaussianBlurFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        gaussianBlurFilter.setValue(gaussianBlurSlider.value, forKey: kCIInputRadiusKey)
+        
+        exposureFilter.setValue(gaussianBlurFilter.outputImage, forKey: kCIInputImageKey)
+        exposureFilter.setValue(exposureSlider.value, forKey: kCIInputEVKey)
+        
+        tempAndTintFilter.setValue(exposureFilter.outputImage, forKey: kCIInputImageKey)
+        tempAndTintFilter.setValue(CIVector(x: 6500, y: 0), forKey: "inputNeutral")
+        tempAndTintFilter.setValue(CIVector(x: CGFloat(temperatureSlider!.value), y: CGFloat(tintSlider!.value)), forKey: "inputTargetNeutral")
+        
+        vibranceFilter.setValue(tempAndTintFilter.outputImage, forKey: kCIInputImageKey)
+        vibranceFilter.setValue(vibranceSlider.value, forKey: "inputAmount")
+        
+        posterizeFilter.setValue(vibranceFilter.outputImage, forKey: kCIInputImageKey)
+        posterizeFilter.setValue(posterizeSlider.value, forKey: "inputLevels")
+        
+        guard let outputCIImage = posterizeFilter.outputImage else { return UIImage(data: imageData)! }
+        
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return UIImage(data: imageData)! }
+        
+        return UIImage(cgImage: outputCGImage)
+    }
+    
     
     var postController: PostController!
     var post: Post?
     var imageData: Data?
+    private let gaussianBlurFilter = CIFilter(name: "CIGaussianBlur")!
+    private let exposureFilter = CIFilter(name: "CIExposureAdjust")!
+    private let vibranceFilter = CIFilter(name: "CIVibrance")!
+    private let tempAndTintFilter = CIFilter(name: "CITemperatureAndTint")!
+    private let posterizeFilter = CIFilter(name: "CIColorPosterize")!
+    private let context = CIContext(options: nil)
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var postButton: UIBarButtonItem!
-    @IBOutlet weak var gaussianBlurLabel: UISlider!
+    
+    @IBOutlet weak var gaussianBlurLabel: UILabel!
     @IBOutlet weak var gaussianBlurSlider: UISlider!
     @IBOutlet weak var exposureLabel: UILabel!
     @IBOutlet weak var exposureSlider: UISlider!

@@ -156,10 +156,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6kc-ZJ-dWX">
-                                        <rect key="frame" x="8" y="423" width="359" height="157"/>
+                                        <rect key="frame" x="8" y="429" width="359" height="52.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your photo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAq-Hz-kkq">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VzQ-PT-XvK">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="24"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="359" height="24"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngj-kl-480">
                                                         <rect key="frame" x="0.0" y="0.0" width="65.5" height="24"/>
@@ -224,74 +230,74 @@
                                                     <constraint firstItem="5dq-UE-A9P" firstAttribute="width" secondItem="Ngj-kl-480" secondAttribute="width" id="wgG-Py-qXD"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Gaussian Blur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gti-34-XBX">
-                                                <rect key="frame" x="0.0" y="32" width="359" height="20.5"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Gaussian Blur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gti-34-XBX">
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WE6-yN-yF9" userLabel="Gaussian Slider">
-                                                <rect key="frame" x="-2" y="60.5" width="363" height="31"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="WE6-yN-yF9" userLabel="Gaussian Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changeBlur:" destination="1Aw-4e-BW2" eventType="valueChanged" id="aAb-2A-yU5"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Exposure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEv-wb-bUT">
-                                                <rect key="frame" x="0.0" y="98.5" width="359" height="20.5"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Exposure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEv-wb-bUT">
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2iP-1M-I5y" userLabel="Exposure Slider">
-                                                <rect key="frame" x="-2" y="127" width="363" height="31"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-10" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="2iP-1M-I5y" userLabel="Exposure Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changeExposure:" destination="1Aw-4e-BW2" eventType="valueChanged" id="CTr-OG-hc7"/>
                                                 </connections>
                                             </slider>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Vibrance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuV-Fa-g10">
-                                                <rect key="frame" x="0.0" y="161" width="359" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="S65-DK-9kE" userLabel="Vibrance Slider">
-                                                <rect key="frame" x="-2" y="161" width="363" height="1"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="S65-DK-9kE" userLabel="Vibrance Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changeVibrance:" destination="1Aw-4e-BW2" eventType="valueChanged" id="3Aa-KU-cET"/>
                                                 </connections>
                                             </slider>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Tint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQJ-Up-FkK">
-                                                <rect key="frame" x="0.0" y="161" width="359" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-Ck-Yng" userLabel="Tint Slider">
-                                                <rect key="frame" x="-2" y="161" width="363" height="1"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="6500" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-Ck-Yng" userLabel="Tint Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changeTint:" destination="1Aw-4e-BW2" eventType="valueChanged" id="dEm-bW-P3N"/>
                                                 </connections>
                                             </slider>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-ep-ag9">
-                                                <rect key="frame" x="0.0" y="161" width="359" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="47f-qC-gDs" userLabel="Temp Slider">
-                                                <rect key="frame" x="-2" y="161" width="363" height="1"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6500" minValue="0.0" maxValue="6500" translatesAutoresizingMaskIntoConstraints="NO" id="47f-qC-gDs" userLabel="Temp Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changeTemperature:" destination="1Aw-4e-BW2" eventType="valueChanged" id="5dy-LQ-7co"/>
                                                 </connections>
                                             </slider>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Posterize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKx-uJ-O8l">
-                                                <rect key="frame" x="0.0" y="161" width="359" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-tQ-fJv" userLabel="Posterize Slider">
-                                                <rect key="frame" x="-2" y="161" width="363" height="1"/>
+                                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="2" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-tQ-fJv" userLabel="Posterize Slider">
+                                                <rect key="frame" x="-2" y="56.5" width="363" height="1"/>
                                                 <connections>
                                                     <action selector="changePosterize:" destination="1Aw-4e-BW2" eventType="valueChanged" id="0dc-mW-Z9b"/>
                                                 </connections>
@@ -308,7 +314,7 @@
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" id="bPK-xN-eaO"/>
                                     <constraint firstAttribute="bottom" secondItem="PkI-rS-ua9" secondAttribute="bottom" id="cfV-7c-ubK"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="width" secondItem="9qd-If-ddw" secondAttribute="width" id="dWh-6N-mO7"/>
-                                    <constraint firstItem="6kc-ZJ-dWX" firstAttribute="top" secondItem="PkI-rS-ua9" secondAttribute="bottom" constant="10" id="jWm-n5-iBu"/>
+                                    <constraint firstItem="6kc-ZJ-dWX" firstAttribute="top" secondItem="PkI-rS-ua9" secondAttribute="bottom" constant="16" id="jWm-n5-iBu"/>
                                     <constraint firstAttribute="height" priority="250" constant="603" id="qMm-7B-8rp"/>
                                 </constraints>
                             </scrollView>
@@ -334,7 +340,7 @@
                         <outlet property="chooseImageButton" destination="VxD-cu-jHT" id="KVs-no-MbU"/>
                         <outlet property="exposureLabel" destination="lEv-wb-bUT" id="2E9-ch-rF3"/>
                         <outlet property="exposureSlider" destination="2iP-1M-I5y" id="sW7-FT-TwT"/>
-                        <outlet property="gaussianBlurLabel" destination="WE6-yN-yF9" id="hDg-jv-Xcn"/>
+                        <outlet property="gaussianBlurLabel" destination="gti-34-XBX" id="FEe-2B-wbF"/>
                         <outlet property="gaussianBlurSlider" destination="WE6-yN-yF9" id="dYV-hQ-gMo"/>
                         <outlet property="imageHeightConstraint" destination="MHD-wr-Gq9" id="HyG-8g-Ck1"/>
                         <outlet property="imageView" destination="4eK-5F-H5h" id="e7m-c5-Xhz"/>
