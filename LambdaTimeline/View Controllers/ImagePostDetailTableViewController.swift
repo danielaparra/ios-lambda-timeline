@@ -64,6 +64,7 @@ class ImagePostDetailTableViewController: UITableViewController {
         }
         
         let audioCommentAction = UIAlertAction(title: "Audio", style: .default) { (_) in
+            
             self.performSegue(withIdentifier: "AddAudioComment", sender: nil)
         }
         
@@ -91,11 +92,22 @@ class ImagePostDetailTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddAudioComment" {
+            guard let destinationVC = segue.destination as? RecordAudioCommentViewController else { return }
+            
+            destinationVC.post = post
+            destinationVC.postController = postController
+        }
+    }
+    
+    // MARK: - Properties
+    
     var post: Post!
     var postController: PostController!
     var imageData: Data?
-    
-    
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

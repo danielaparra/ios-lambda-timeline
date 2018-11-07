@@ -530,7 +530,7 @@
                         <outlet property="imageView" destination="Q0L-w5-qUw" id="0v7-ZB-mgi"/>
                         <outlet property="imageViewAspectRatioConstraint" destination="y1B-iX-x3e" id="wIt-kh-Tzd"/>
                         <outlet property="titleLabel" destination="jyy-BX-c2c" id="UEd-xO-ipC"/>
-                        <segue destination="UWs-Zv-rnf" kind="presentation" identifier="AddAudioComment" id="Efp-XT-VEE"/>
+                        <segue destination="UWs-Zv-rnf" kind="show" identifier="AddAudioComment" id="Efp-XT-VEE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,18 +546,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="jlH-k0-acd">
-                                <rect key="frame" x="32" y="200" width="311" height="167"/>
+                                <rect key="frame" x="32" y="244" width="311" height="123"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAI-vZ-Dph">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="24.5"/>
                                         <state key="normal" image="record"/>
+                                        <connections>
+                                            <action selector="record:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="bxL-dW-8ui"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbS-n0-9SC">
-                                        <rect key="frame" x="0.0" y="68.5" width="311" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="46.5" width="311" height="24.5"/>
                                         <state key="normal" image="stop"/>
+                                        <connections>
+                                            <action selector="stop:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="han-SK-lhJ"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="HQM-3Q-VHL">
-                                        <rect key="frame" x="0.0" y="137" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="93" width="311" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-Hw-p7b">
                                                 <rect key="frame" x="0.0" y="0.0" width="135.5" height="30"/>
@@ -565,6 +571,9 @@
                                                 <state key="normal" title="Send">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sendAudioComment:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="Usj-d4-KB0"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyH-mc-MzB">
                                                 <rect key="frame" x="175.5" y="0.0" width="135.5" height="30"/>
@@ -572,6 +581,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="cancel:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="7Bf-Rc-XAe"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -593,6 +605,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eQZ-LD-f06"/>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="QAI-vZ-Dph" id="0bt-RW-DKY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKP-he-fXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
