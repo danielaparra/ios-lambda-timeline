@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ImagePostDetailTableViewController: UITableViewController {
-    
+class ImagePostDetailTableViewController: UITableViewController, AudioCommentsUpdateDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
@@ -26,6 +26,10 @@ class ImagePostDetailTableViewController: UITableViewController {
         
         titleLabel.text = post.title
         authorLabel.text = post.author.displayName
+    }
+    
+    func audioCommentsDidUpdate() {
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -86,8 +90,11 @@ class ImagePostDetailTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell()}
         
         let comment = post?.comments[indexPath.row + 1]
-        
         cell.comment = comment
+        
+        if comment?.audioURL != nil {
+            loadAudio(for: cell, forItemAt: indexPath)
+        }
         
         return cell
     }
@@ -100,7 +107,55 @@ class ImagePostDetailTableViewController: UITableViewController {
             
             destinationVC.post = post
             destinationVC.postController = postController
+            destinationVC.delegate = self
         }
+    }
+    
+    // MARK: - Private Method
+    
+    private func loadAudio(for cell: CommentTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let comment = post.comments[indexPath.row + 1]
+        let commentTimestamp = comment.timestamp
+        
+        if let audioData = cache.value(for: commentTimestamp) {
+            cell.audioData = audioData
+            self.tableView.reloadRows(at: [indexPath], with: .right)
+        }
+        
+        let fetchOp = AudioFetchOperation(comment: comment)
+        
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.audioData {
+                self.cache.cache(value: data, for: commentTimestamp)
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: [indexPath], with: .right)
+                }
+            }
+        }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: commentTimestamp)}
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                print("Got audio for now-reused cell")
+                return
+            }
+            
+            if let data = fetchOp.audioData {
+                cell.audioData = data
+                self.tableView.reloadRows(at: [indexPath], with: .right)
+            }
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        audioFetchQueue.addOperation(fetchOp)
+        audioFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[commentTimestamp] = fetchOp
     }
     
     // MARK: - Properties
@@ -108,6 +163,9 @@ class ImagePostDetailTableViewController: UITableViewController {
     var post: Post!
     var postController: PostController!
     var imageData: Data?
+    private let cache = Cache<Date, Data>()
+    private var operations = [Date : Operation]()
+    private let audioFetchQueue = OperationQueue()
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

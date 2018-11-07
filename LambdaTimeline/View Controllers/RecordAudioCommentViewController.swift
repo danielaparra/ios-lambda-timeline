@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol AudioCommentsUpdateDelegate {
+    func audioCommentsDidUpdate()
+}
+
 class RecordAudioCommentViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func record(_ sender: Any) {
@@ -43,6 +47,7 @@ class RecordAudioCommentViewController: UIViewController, AVAudioRecorderDelegat
             let post = post else { return }
         
         postController?.addAudioComment(with: recordingURL, to: post)
+        delegate?.audioCommentsDidUpdate()
         navigationController?.popViewController(animated: true)
     }
     
@@ -79,6 +84,7 @@ class RecordAudioCommentViewController: UIViewController, AVAudioRecorderDelegat
     private var recordingURL: URL?
     var post: Post?
     var postController: PostController?
+    var delegate: AudioCommentsUpdateDelegate?
 
     @IBOutlet weak var recordButton: UIButton!
 }
