@@ -48,7 +48,7 @@ class ImagePostDetailTableViewController: UITableViewController {
                 
                 guard let commentText = commentTextField?.text else { return }
                 
-                self.postController.addComment(with: commentText, to: &self.post!)
+                self.postController.addTextComment(with: commentText, to: &self.post!)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -75,33 +75,6 @@ class ImagePostDetailTableViewController: UITableViewController {
         
         self.present(alert, animated: true, completion: nil)
         
-        
-//        let alert = UIAlertController(title: "Add a comment", message: "Write your comment below:", preferredStyle: .alert)
-//
-//        var commentTextField: UITextField?
-//
-//        alert.addTextField { (textField) in
-//            textField.placeholder = "Comment:"
-//            commentTextField = textField
-//        }
-//
-//        let addCommentAction = UIAlertAction(title: "Add Comment", style: .default) { (_) in
-//
-//            guard let commentText = commentTextField?.text else { return }
-//
-//            self.postController.addComment(with: commentText, to: &self.post!)
-//
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        
-//        alert.addAction(addCommentAction)
-//        alert.addAction(cancelAction)
-//        
-//        present(alert, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,12 +82,11 @@ class ImagePostDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell()}
         
         let comment = post?.comments[indexPath.row + 1]
         
-        cell.textLabel?.text = comment?.text
-        cell.detailTextLabel?.text = comment?.author.displayName
+        cell.comment = comment
         
         return cell
     }

@@ -44,7 +44,7 @@ class Comment: FirebaseConvertible, Equatable {
     var dictionaryRepresentation: [String: Any] {
         return [Comment.textKey: text,
                 Comment.author: author.dictionaryRepresentation,
-                Comment.timestampKey: timestamp.timeIntervalSince1970]
+                Comment.timestampKey: timestamp.timeIntervalSince1970, Comment.audioURLKey: audioURL]
     }
     
     static func ==(lhs: Comment, rhs: Comment) -> Bool {
