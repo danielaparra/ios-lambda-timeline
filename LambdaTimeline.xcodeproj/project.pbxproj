@@ -33,6 +33,8 @@
 		7B6D0DF12192377F00C14613 /* RecordAudioCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6D0DF02192377F00C14613 /* RecordAudioCommentViewController.swift */; };
 		7B6D0DF32192425200C14613 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6D0DF22192425200C14613 /* CommentTableViewCell.swift */; };
 		7BE87EDC2190E9BB00472C80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BE87EDB2190E9BB00472C80 /* GoogleService-Info.plist */; };
+		7BF7504C2193969400DBCD73 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7504B2193969400DBCD73 /* CameraPreviewView.swift */; };
+		7BF7504E2193970800DBCD73 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7504D2193970800DBCD73 /* CameraViewController.swift */; };
 		E453457955DF907FCBD117F1 /* Pods_LambdaTimeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA39CACB677861CF84322FB5 /* Pods_LambdaTimeline.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		7B6D0DF02192377F00C14613 /* RecordAudioCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecordAudioCommentViewController.swift; path = "LambdaTimeline/View Controllers/RecordAudioCommentViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7B6D0DF22192425200C14613 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		7BE87EDB2190E9BB00472C80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		7BF7504B2193969400DBCD73 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		7BF7504D2193970800DBCD73 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		AA39CACB677861CF84322FB5 /* Pods_LambdaTimeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LambdaTimeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -168,7 +172,6 @@
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				46CFE6F421707D0000E7FF73 /* ImagePostViewController.swift */,
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
-				7B6D0DF22192425200C14613 /* CommentTableViewCell.swift */,
 				7B6D0DF02192377F00C14613 /* RecordAudioCommentViewController.swift */,
 			);
 			path = "View Controllers";
@@ -177,7 +180,10 @@
 		46CFE7042171572900E7FF73 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7BF7504B2193969400DBCD73 /* CameraPreviewView.swift */,
+				7BF7504D2193970800DBCD73 /* CameraViewController.swift */,
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
+				7B6D0DF22192425200C14613 /* CommentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
 				7B6D0DF32192425200C14613 /* CommentTableViewCell.swift in Sources */,
+				7BF7504E2193970800DBCD73 /* CameraViewController.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
@@ -399,6 +406,7 @@
 				4646379C2170091A00E7FF73 /* PostController.swift in Sources */,
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
+				7BF7504C2193969400DBCD73 /* CameraPreviewView.swift in Sources */,
 				7B6D0DF12192377F00C14613 /* RecordAudioCommentViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,

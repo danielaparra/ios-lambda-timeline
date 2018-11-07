@@ -99,11 +99,62 @@
                     <connections>
                         <segue destination="1Aw-4e-BW2" kind="show" identifier="AddImagePost" id="jaI-fq-Woc"/>
                         <segue destination="OyM-8q-Icp" kind="show" identifier="ViewImagePost" id="hhs-es-AdQ"/>
+                        <segue destination="bTR-ma-xrW" kind="show" id="B9f-Wq-fpe"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRz-lg-pQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1216.8" y="108.39580209895054"/>
+        </scene>
+        <!--Video Post-->
+        <scene sceneID="6zh-wT-9tl">
+            <objects>
+                <viewController id="bTR-ma-xrW" customClass="camera" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PkL-Ut-q8f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-DA-ytd" customClass="CameraPreviewView" customModule="LambdaTimeline" customModuleProvider="target">
+                                <rect key="frame" x="32" y="64" width="311" height="553"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rA-4G-Glc">
+                                        <rect key="frame" x="139" y="260" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="play"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VLE-DA-ytd" secondAttribute="height" multiplier="9:16" id="lML-bb-a4L"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohg-1B-cLc">
+                                <rect key="frame" x="170.5" y="625" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ohg-1B-cLc" secondAttribute="height" multiplier="1:1" id="K0b-fc-lJR"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.06974860209" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="Record-1"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xd1-jg-7aS" firstAttribute="bottom" secondItem="Ohg-1B-cLc" secondAttribute="bottom" constant="8" id="594-5o-TIr"/>
+                            <constraint firstItem="VLE-DA-ytd" firstAttribute="top" secondItem="Xd1-jg-7aS" secondAttribute="top" id="M7j-se-xsX"/>
+                            <constraint firstItem="Ohg-1B-cLc" firstAttribute="top" secondItem="VLE-DA-ytd" secondAttribute="bottom" constant="8" id="b9A-YJ-L6d"/>
+                            <constraint firstItem="VLE-DA-ytd" firstAttribute="leading" secondItem="Xd1-jg-7aS" secondAttribute="leading" constant="32" id="fhS-R7-tbT"/>
+                            <constraint firstItem="Xd1-jg-7aS" firstAttribute="trailing" secondItem="VLE-DA-ytd" secondAttribute="trailing" constant="32" id="pe8-G7-KdT"/>
+                            <constraint firstItem="Ohg-1B-cLc" firstAttribute="centerX" secondItem="PkL-Ut-q8f" secondAttribute="centerX" id="zf9-ko-xKS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xd1-jg-7aS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Video Post" id="soS-M5-67R">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="gjo-sf-iMK"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n57-83-BA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1968.8" y="-874.81259370314854"/>
         </scene>
         <!--Title-->
         <scene sceneID="kP9-yp-I8H">
@@ -546,24 +597,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="jlH-k0-acd">
-                                <rect key="frame" x="32" y="244" width="311" height="123"/>
+                                <rect key="frame" x="32" y="244" width="311" height="138"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAI-vZ-Dph">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QAI-vZ-Dph" secondAttribute="height" multiplier="1:1" id="b7q-mY-piW"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.159375987" green="0.55901878240000002" blue="0.11595733599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="record"/>
                                         <connections>
                                             <action selector="record:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="bxL-dW-8ui"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbS-n0-9SC">
-                                        <rect key="frame" x="0.0" y="46.5" width="311" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="54" width="311" height="32"/>
+                                        <color key="tintColor" red="1" green="0.06974860209" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="stop"/>
                                         <connections>
                                             <action selector="stop:" destination="UWs-Zv-rnf" eventType="touchUpInside" id="han-SK-lhJ"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="HQM-3Q-VHL">
-                                        <rect key="frame" x="0.0" y="93" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="108" width="311" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-Hw-p7b">
                                                 <rect key="frame" x="0.0" y="0.0" width="135.5" height="30"/>
@@ -615,6 +671,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Record-1" width="116" height="116"/>
         <image name="play" width="32" height="32"/>
         <image name="record" width="32" height="32"/>
         <image name="stop" width="32" height="32"/>
